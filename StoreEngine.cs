@@ -22,5 +22,17 @@ namespace OOPAdvanced02
             }
             return matches;
         }
+
+        // Task 03.1: Print Reports
+        // Delegate Used: Action<Product>
+        // Why: Action<T> represents a method that takes a parameter (Product) and returns void.
+        // It is ideal for side effects like printing, allowing the caller to define the format.
+        internal static void PrintReport(List<Product> products, Action<Product> printAction)
+        {
+            foreach (var product in products)
+            {
+                printAction(product);
+            }
+        }
     }
 }

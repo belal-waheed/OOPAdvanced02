@@ -57,6 +57,20 @@
                 Console.WriteLine($"{p.Name} - ${p.Price} (Stock: {p.Stock})");
             }
             #endregion
+
+            #region Task 03.1: Print Reports
+            // Delegate Used: Action<Product>
+            // Why: Action<Product> accepts a Product and returns void.
+            // It allows the caller to decide the formatting and printing side-effects without modifying the engine.
+
+            // Scenario 1: Short Report (Name - $price)
+            Console.WriteLine("\n\n\n\n\n\n--- Short Report ---");
+            StoreEngine.PrintReport(catalog, p => Console.WriteLine($"{p.Name} - ${p.Price}"));
+
+            // Scenario 2: Detailed Report ([Category] Name | Price: $price | Stock: stock)
+            Console.WriteLine("\n--- Detailed Report ---");
+            StoreEngine.PrintReport(catalog, p => Console.WriteLine($"[{p.Category}] {p.Name} | Price: ${p.Price} | Stock: {p.Stock}"));
+            #endregion
         }
     }
 }
