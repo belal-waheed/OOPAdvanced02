@@ -19,6 +19,44 @@
                 new Product { Id = 10, Name = "Jacket", Category = "Clothing", Price = 90, Stock = 15 }
             };
             #endregion
+
+            #region Task 01
+            // Delegate Used: Func<Product, bool>
+            // Why: Takes a Product parameter and returns a bool indicating if the condition is met.
+            // Allows the caller to define dynamic filtering logic via lambdas without modifying the engine.
+
+            // 1. All Electronics products
+            Console.WriteLine("--- Electronics ---");
+            List<Product> electronics = StoreEngine.SearchProducts(catalog, p => p.Category == "Electronics");
+            foreach (var p in electronics)
+            {
+                Console.WriteLine($"{p.Name} - ${p.Price} (Stock: {p.Stock})");
+            }
+
+            // 2. Products cheaper than $50
+            Console.WriteLine("\n--- Under $50 ---");
+            List<Product> under50 = StoreEngine.SearchProducts(catalog, p => p.Price < 50);
+            foreach (var p in under50)
+            {
+                Console.WriteLine($"{p.Name} - ${p.Price} (Stock: {p.Stock})");
+            }
+
+            // 3. Products that are in stock (Stock > 0)
+            Console.WriteLine("\n--- In Stock ---");
+            List<Product> inStock = StoreEngine.SearchProducts(catalog, p => p.Stock > 0);
+            foreach (var p in inStock)
+            {
+                Console.WriteLine($"{p.Name} - ${p.Price} (Stock: {p.Stock})");
+            }
+
+            // 4. Clothing products under $100
+            Console.WriteLine("\n--- Clothing Under $100 ---");
+            List<Product> cheapClothing = StoreEngine.SearchProducts(catalog, p => p.Category == "Clothing" && p.Price < 100);
+            foreach (var p in cheapClothing)
+            {
+                Console.WriteLine($"{p.Name} - ${p.Price} (Stock: {p.Stock})");
+            }
+            #endregion
         }
     }
 }
