@@ -50,5 +50,24 @@ namespace OOPAdvanced02
 
             return transformedList;
         }
+
+        // Task 03.3: Filter Products
+        // Delegate Used: Predicate<Product>
+        // Why: Predicate<T> is a specialized built-in delegate that takes one parameter of type T
+        // and always returns a bool.
+        internal static List<Product> FilterProducts(List<Product> products, Predicate<Product> condition)
+        {
+            List<Product> matches = new List<Product>();
+
+            foreach (var product in products)
+            {
+                if (condition(product))
+                {
+                    matches.Add(product);
+                }
+            }
+
+            return matches;
+        }
     }
 }

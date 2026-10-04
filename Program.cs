@@ -94,6 +94,21 @@
             }
             #endregion
 
+
+            #region Task 03.3: Filter Products
+            // Delegate Used: Predicate<Product>
+            // Why: Dedicated single-parameter boolean delegate (equivalent to Func<Product, bool>)
+            // specifically intended for evaluating whether an item meets a condition.
+
+            // Scenario 5: Low-Stock Alert (Stock < 20)
+            Console.WriteLine("\n\n\n\n\n\n--- Low-Stock Alert ---");
+            List<Product> lowStockProducts = StoreEngine.FilterProducts(catalog, p => p.Stock < 20);
+            foreach (var p in lowStockProducts)
+            {
+                Console.WriteLine($"[LOW STOCK] {p.Name}: only {p.Stock} left!");
+            }
+            #endregion
+
         }
     }
 }
