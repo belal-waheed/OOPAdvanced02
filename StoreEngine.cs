@@ -34,5 +34,21 @@ namespace OOPAdvanced02
                 printAction(product);
             }
         }
+
+        // Task 03.2: Transform Products
+        // Delegate Used: Func<Product, TResult>
+        // Why: Func<T, TResult> takes a Product and returns a transformed value of type TResult.
+        // This allows mapping products into strings, view models, or calculated numbers.
+        internal static List<TResult> TransformProducts<TResult>(List<Product> products, Func<Product, TResult> transformer)
+        {
+            List<TResult> transformedList = new List<TResult>();
+
+            foreach (var product in products)
+            {
+                transformedList.Add(transformer(product));
+            }
+
+            return transformedList;
+        }
     }
 }

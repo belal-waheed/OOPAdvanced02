@@ -71,6 +71,29 @@
             Console.WriteLine("\n--- Detailed Report ---");
             StoreEngine.PrintReport(catalog, p => Console.WriteLine($"[{p.Category}] {p.Name} | Price: ${p.Price} | Stock: {p.Stock}"));
             #endregion
+
+            #region Task 03.2: Transform Products
+            // Delegate Used: Func<Product, TResult>
+            // Why: Takes an input Product and returns a new transformed value (TResult, here string).
+            // It allows converting data into different formats/projections cleanly.
+
+            // Scenario 3: Summary List (e.g. "Laptop ($1200)")
+            Console.WriteLine("\n\n\n\n\n--- Summary List ---");
+            List<string> summaryList = StoreEngine.TransformProducts(catalog, p => $"{p.Name} (${p.Price})");
+            foreach (var item in summaryList)
+            {
+                Console.WriteLine(item);
+            }
+
+            // Scenario 4: Price Labels ("Expensive!" if Price > 100, else "Affordable")
+            Console.WriteLine("\n--- Price Labels ---");
+            List<string> priceLabels = StoreEngine.TransformProducts(catalog, p => $"{p.Name}: {(p.Price > 100 ? "Expensive!" : "Affordable")}");
+            foreach (var label in priceLabels)
+            {
+                Console.WriteLine(label);
+            }
+            #endregion
+
         }
     }
 }
